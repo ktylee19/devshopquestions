@@ -4,8 +4,16 @@ Template.askForm.add_question = function () {
 
 Template.askForm.events({
   'click #ask-question-form': function (e) {
-    Session.set('add_question', true);
-    e.preventDefault();
+    /*if statement to check that hey haven't already asked a question*/
+    if (!Meteor.user()) {
+      alert("You must be logged in to Github.");
+    } else if (Questions.find({answered:false},{poster:{userId:Meteor.userId}}).count() > 1){
+      alert("Please wait for your first question to get answered.")
+      return false;
+    } else {
+      Session.set('add_question', true);
+      e.preventDefault();
+    };
   }
 });
 
@@ -15,7 +23,7 @@ Template.form.events({
     var location = $(templ.find("#location")).val();
     var question = $(templ.find("#text")).val();
 
-    if (!name || !location || !question)
+    if (!name /*|| !location */|| !question)
       return true;
 
     resetForm();
@@ -35,7 +43,7 @@ Template.form.events({
       poster: {
         name: name,
         emailMd5: emailMd5,
-        userId: (Meteor.userId() || ""),
+        userId: (Meteor.userId()/* || ""*/),
         avatarLink: avatarLink
       }
     };

@@ -27,8 +27,8 @@ Template.header.rendered = function () {
 
 Template.header.title = function () {
   if (Meteor.Router.page() === "feed")
-    return "DevshopQuestions.Meteor.com";
-  return "Devshop Questions";
+    return "helpq.meteor.com";
+  return "Help Queue @ MeteorHack";
 };
 
 function putGitHubIcon () {

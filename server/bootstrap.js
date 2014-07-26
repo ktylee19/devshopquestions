@@ -1,13 +1,13 @@
 Meteor.startup(function () {
   // Gods are initialized here
   if (!Admins.find().count())
-    _.each(["avital", "awoo1126", "debergalis", "dgreensp", "ekatek", "estark37", "glasser", "gschmidt", "jadeqwang", "karayu", "n1mmy", "sixolet", "Slava", "yaliceme"], function (gh) {
+    _.each(["avital", "awoo1126", "debergalis", "dgreensp", "ekatek", "estark37", "glasser", "gschmidt", "jadeqwang", "ktylee19", "n1mmy", "Slava", "yaliceme"], function (gh) {
       Admins.insert({ github: gh });
     });
 
     if (!Announcements.find().count())
       Announcements.insert({
-        html: '<strong>We are on Twitter!</strong> Tweet your announcements on <a href="https://twitter.com/search?q=%23meteordevshop" class="alert-link">#MeteorDevshop</a>',
+        html: '<strong>We are on Twitter!</strong> Tweet your announcements on <a href="https://twitter.com/search?q=%23meteorhack" class="alert-link">#MeteorHack</a>',
         when: (new Date)
       });
       if (!Questions.find().count())

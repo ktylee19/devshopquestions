@@ -59,17 +59,6 @@ Template.question.editing = function () {
 }
 
 Template.question.events({
-  'click .active-ribbon, click .empty-ribbon': function (e) {
-    var self = this;
-    if (!Meteor.user() || !Meteor.user().admin)
-      return;
-    Meteor.call('hasPermissions', Meteor.userId(), Questions.findOne(self._id), function (err, res) {
-      if (err || !res)
-        return;
-      Questions.update(self._id, { $set: { flagged: !self.flagged }});
-    });
-  },
-
   'click [data-action=toggle-answered]': function () {
     var self = this;
     Meteor.call('hasPermissions', Meteor.userId(), self, function (err, res) {

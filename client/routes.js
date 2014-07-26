@@ -1,6 +1,6 @@
 Meteor.Router.add({
   '/': 'home',
-  '/about': 'about',
+  /*'/about': 'about',*/
   '/displays': 'feed',
   '/admin': function () {
     if (Meteor.user() && Meteor.user().admin)

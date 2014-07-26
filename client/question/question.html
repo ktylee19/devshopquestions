@@ -1,18 +1,11 @@
 
 <template name="question">
 <div class="question-wrapper">
-  {{#if showing_ribbon}}
-    {{#if flagged}}
-      <div class="active-ribbon {{answered}}" {{ribbon_clickable}}></div>
-    {{else}}
-      <div class="empty-ribbon {{answered}}" clickable></div>
-    {{/if}}
-  {{/if}}
   <div class="question {{answered}}">
     <img src="{{img}}">
     <div class="info">
       <h4 class="name">{{poster.name}}</h4>
-      <span class="location">@{{location}}</span>
+      <!--span class="location">@{{location}}</span-->
       <span class="timestamp">{{prettyDate}}</span>
     </div>
 

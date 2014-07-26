@@ -1,21 +1,15 @@
 About this app
 --------------
 
-This is the questions app used on monthly Meteor Devshops at San Francisco.
+This is a help queue to be used by MIT students in 6.01: Introduction to EECS.  
 
-From 2pm to 6pm there is a co-working session during the devshop, people work on
-their projects, learn Meteor or just held interesting conversations on related
-topics.
+(This is a modification of the questions app used on Montly Meteor Devshops in SF.  For original project, go [here](https://github.com/meteor/devshopquestions)
 
-Sometimes people have technical questions or questions about certain application
-design decisions. They are looking for help from people around them and then
-they would use this app to post a question.
+There is one design lab and one software lab session each week, where students 
+collaborate in order to complete their given labs, after which they receive a 
+"check-off" from a lab instructor, teaching assistant, or lab assistant. 
 
-Core developers, volunteers or anyone else can look at the question they are
-interested in and help the asker in person. It is very important to preserve the
-idea of live personal help as opposed to a text-based answer or a link to
-Google. We want people to communicate in person as they are already on devshop
-onsite, otherwise we would just use StackOverflow.
+Instead of having students raise their hands in order to receive help and check-offs from the instructors and assistants, a help queue was create in order to provide help to the students during the session.  This creates a fair, queue-based system so that students are not wasting theiri time following instructors adn assistants around the lab and that all students get equal opportunity for attention.  
 
 
 Questions
@@ -48,22 +42,14 @@ or
 
     Free flushots are on the second floor!
 
-
-Displays view
--------------
-
-On http://devshopquestions.meteor.com/displays we have a special view to project
-on the wall. In this view we emphasize the banner notification, questions and
-the Twitter feed on #MeteorDevshop.
-
 Admins
 ------
 
 Admins can modify/delete/mark as answered any question. In addition admins can
 flag the question as "difficult" to ask for more help from core developers.
 
-Admins are configured in http://devshopquestions.meteor.com/admin panel and
-added by their GitHub names.
+Admins are configured in http://helpq.meteor.com/admin panel and
+added by their Kerberos usernames.
 
 Deployment
 ----------
@@ -76,4 +62,3 @@ with minification of bootstrap theme and jquery plugin. The minifier update
 landed on devel which will fix it. Whenever there is a new
 template-engine-preview release with the merge of 0.6.4 or 0.7 - it will be
 fixed.
-

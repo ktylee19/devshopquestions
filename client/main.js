@@ -1,3 +1,7 @@
+/* startup code */
+
+Meteor.startup(function () {
+});
 
 Template.header.events({
   'click .link-about': function (e) {

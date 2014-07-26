@@ -62,10 +62,28 @@ Template.question.events({
   'click [data-action=toggle-answered]': function () {
     var self = this;
     Meteor.call('hasPermissions', Meteor.userId(), self, function (err, res) {
-      if (err || !res)
+      if (err || !res){
         return;
-      Questions.update(self._id, { $set: { answered: !self.answered }});
 
+      } else if (Questions.find({answered:false},{poster:{userId:self.poster["userId"]}}).count()>0 && self.answered) {
+        console.log(self.answered);
+        console.log(Questions.find({answered:false},{poster:{userId:self.poster["userId"]}}).count());
+        console.log(self.poster["userId"]);
+        console.log(self);
+        console.log(Meteor.userId());
+        console.log();
+      } else{
+        Questions.update(self._id, { $set: { answered: !self.answered }});
+      }
+    });
+  },
+  'click [data-action=ping]': function () {
+    var self = this;
+    Meteor.call('hasPermissions', Meteor.userId(), self, function (err, res) {
+      if (err || !res || !Meteor.userId() || !self.poster.userId)
+        return;
+      /* add something to the ALert collection. */
+      Meteor.call('alertUser', self.poster.userId);
     });
   },
   'click [data-action=delete]': function () {
@@ -107,6 +125,19 @@ var relativeDate = function (then) {
   } else
     return "Long long time ago";
 };
+
+Meteor.startup(function () {
+  var lastPing = (+new Date) + 2*1000;
+  Alerts.find().observe({
+    added: function (doc) {
+      console.log('ping', doc, +lastPing + 2*1000)
+      if (+doc.ts + 10*1000 >= +(new Date) && +lastPing + 500 < +(new Date)) {
+        alert("YO from the help desk");
+        lastPing = +(new Date);
+      }
+    }
+  });
+});
 
 Meteor.setInterval(function () {
   timeDependency.changed();

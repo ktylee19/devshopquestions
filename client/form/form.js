@@ -7,9 +7,6 @@ Template.askForm.events({
     /*if statement to check that hey haven't already asked a question*/
     if (!Meteor.user()) {
       alert("You must be logged in to Github.");
-    } else if (Questions.find({answered:false},{poster:{userId:Meteor.userId}}).count() > 1){
-      alert("Please wait for your first question to get answered.")
-      return false;
     } else {
       Session.set('add_question', true);
       e.preventDefault();
